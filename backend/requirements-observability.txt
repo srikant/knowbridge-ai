@@ -1,0 +1,3 @@
+# Optional LLM tracing and monitoring.
+-r requirements.txt
+langfuse>=2.0

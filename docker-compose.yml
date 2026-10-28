@@ -1,0 +1,37 @@
+services:
+  api:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      KNOWBRIDGE_DATA_DIR: /app/data
+      KNOWBRIDGE_LLM_PROVIDER: ${KNOWBRIDGE_LLM_PROVIDER:-auto}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      KNOWBRIDGE_OLLAMA_ENABLED: ${KNOWBRIDGE_OLLAMA_ENABLED:-false}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
+      QDRANT_URL: ${QDRANT_URL:-http://qdrant:6333}
+      LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-}
+      LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-}
+      LANGFUSE_HOST: ${LANGFUSE_HOST:-https://cloud.langfuse.com}
+    volumes:
+      - knowbridge-data:/app/data
+    restart: unless-stopped
+
+  # Optional foundation for the future semantic-retrieval milestone.
+  # Start with: docker compose --profile vector up --build
+  qdrant:
+    image: qdrant/qdrant:latest
+    profiles: ["vector"]
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  knowbridge-data:
+  qdrant-data:

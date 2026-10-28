@@ -2,26 +2,32 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
-
-# Virtual environments
 .venv/
 venv/
 env/
 
-# Environment secrets
+# Secrets and local data
 .env
 .env.*
 !.env.example
+backend/data/
 
-# Test and tooling caches
+# Frontend
+node_modules/
+dist/
+
+# Test and tool caches
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
 htmlcov/
 
-# Editors and operating systems
+# Editors and OS
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local containers
+*.log

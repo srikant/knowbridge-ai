@@ -1,0 +1,4 @@
+# Ollama is a separate local service; no Python SDK is required by this MVP.
+# Install the Ollama application from https://ollama.com/download
+# Then pull a model such as: ollama pull llama3.2:3b
+-r requirements.txt

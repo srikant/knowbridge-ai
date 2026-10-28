@@ -1,0 +1,3 @@
+# Optional RAG evaluation stack; may add substantial dependencies.
+-r requirements.txt
+ragas>=0.2

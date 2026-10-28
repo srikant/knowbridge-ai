@@ -1,0 +1,5 @@
+# Optional orchestration frameworks. Install only when implementing these features.
+-r requirements.txt
+langchain>=0.3
+langgraph>=0.2
+llama-index-core>=0.12
